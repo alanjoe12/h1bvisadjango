@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H1B VISA prediction</title>
+    <link rel="stylesheet"  type='text/css' href="{% static 'style.css' %}">
+</head>
+
+<body>
+  <div class="container">
+    <div class="content">
+      <form action="{% url 'result' %}" method="POST">
+        {% csrf_token %}
+        <div class="title">H1B VISA APPROVAL PREDICTION</div>
+        <div class="user-details">
+
+            <div class="input-box">
+                <span class="details">Wage rate of pay</span>
+                <input type="number"  required name="wage">
+              </div>
+
+              <div class="input-box">
+                
+                <span class="details">Naics code</span>
+                <input type="number"  required name="naics">
+              </div>
+
+              <div class="input-box">
+                <span class="details">Employer category</span>
+                <select required name="employer" id="employer">
+                    <option value=""></option>
+                    <option value=1>University</option>
+                    <option value=0 >Non-University </option>
+                </select>
+              </div>
+
+          <div class="input-box">
+            <span class="details">SECONDARY ENTITY 1</span>
+            <select required name="sec_entity" id="sec_entity">
+                <option value=""></option>
+                <option value=1>Yes</option>
+                <option value=0 >No </option>
+            </select>
+          </div>
+
+           <div class="input-box">
+            <span class="details">AGENT REPRESENTING EMPLOYER</span>
+             <select required name="agent" id="agent">
+                 <option value=""></option>
+                 <option value=1>Yes</option>
+                 <option value=0>No </option>
+             </select>
+          </div>
+
+          <div class="input-box">
+            <span class="details">SOC title</span>
+             <select required name="soc_title" id="agent">
+                <option value=""></option>
+                <option value=6>Software</option>
+                <option value=2>Management</option>
+                <option value=4>Medical</option>
+                <option value=3>Mechanical</option>
+                <option value=1>Education</option>
+                <option value=0>Business and Marketing</option>
+                <option value=5>Others</option>
+             </select>
+          </div> 
+        </div>
+        <div class="button">
+          <input type="submit" value="Predict">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
